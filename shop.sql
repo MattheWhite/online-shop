@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS items;
+CREATE TABLE items (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    price INTEGER NOT NULL,
+    description VARCHAR(100) NOT NULL
+);
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(30) NOT NULL,
+  e_mail VARCHAR(30) NOT NULL,
+  chart INTEGER
+);
