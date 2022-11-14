@@ -60,3 +60,17 @@
 {
     margin: 0 0 11px;
 }
+.masthead {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    min-width: 35rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 100%, rgba(0, 0, 0, 0.7) 50%, #000 10%), url(/static/img/bg-cover.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navbar-shrink {
+    background-color: #000080;
+}
