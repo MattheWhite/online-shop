@@ -45,6 +45,11 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${version.plugin.jetty}</version>
                 <configuration>
+                    <webApp>
+                        <_initParams>
+                            <org.eclipse.jetty.servlet.Default.useFileMappedBuffer>false</org.eclipse.jetty.servlet.Default.useFileMappedBuffer>
+                        </_initParams>
+                    </webApp>
                     <!-- On some configs this causes shutdown of context on -->
                     <!-- a page load so disabled. -->
                     <!-- <reload>automatic</reload> -->
