@@ -27,11 +27,5 @@ public class Util {
         Drinks drinks = new Gson().fromJson(content, Drinks.class);
         String jsonResp = new Gson().toJson(drinks.getDrinks());
         System.out.println(jsonResp);
-//        Gson gson = new Gson();
-//        String fullJson = gson.toJson(gson.toJson(content));
-//        System.out.println(fullJson);
-//        PrintWriter out = response.getWriter();
-//
-//        out.println(fullJson);
     }
 }
