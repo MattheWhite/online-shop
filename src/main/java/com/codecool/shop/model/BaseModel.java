@@ -14,6 +14,8 @@ public class BaseModel implements Serializable {
     @SerializedName(value = "description", alternate = "strInstructions")
     protected String description;
 
+    
+
     public BaseModel(String name) {
         this.name = name;
     }

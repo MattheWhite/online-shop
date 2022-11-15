@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Drinks implements Serializable {
-    private List<BaseModel> drinks;
+    private List<Product> drinks;
 
-    public List<BaseModel> getDrinks() {
+    public List<Product> getDrinks() {
         return drinks;
     }
 
