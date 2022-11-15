@@ -1,22 +1,14 @@
 package com.codecool.shop.controller;
 
-import com.codecool.shop.model.BaseModel;
-import com.codecool.shop.model.Product;
+import com.codecool.shop.model.Drinks;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Util {
 
@@ -32,10 +24,9 @@ public class Util {
 
     static void setupJson(HttpServletResponse response, URL url) throws IOException {
         String content = getStringifiedJson(url);
-        System.out.println(content);
-//        Type listType = new TypeToken<ArrayList<BaseModel>>(){}.getType();
-        BaseModel productList = new Gson().fromJson(content, BaseModel.class);
-        System.out.println(productList);
+        Drinks drinks = new Gson().fromJson(content, Drinks.class);
+        String jsonResp = new Gson().toJson(drinks.getDrinks());
+        System.out.println(jsonResp);
 //        Gson gson = new Gson();
 //        String fullJson = gson.toJson(gson.toJson(content));
 //        System.out.println(fullJson);

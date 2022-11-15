@@ -7,11 +7,11 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 
 public class BaseModel implements Serializable {
-    @SerializedName(value = "idDrink", alternate = "id")
+    @SerializedName(value = "id", alternate = "idDrink")
     protected int id;
-    @SerializedName(value = "strDrink", alternate = "name")
+    @SerializedName(value = "name", alternate = "strDrink")
     protected String name;
-    @SerializedName(value = "strInstructions", alternate = "description")
+    @SerializedName(value = "description", alternate = "strInstructions")
     protected String description;
 
     public BaseModel(String name) {
