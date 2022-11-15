@@ -1,12 +1,17 @@
 package com.codecool.shop.model;
 
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 import java.lang.reflect.Field;
 
-public class BaseModel {
-
+public class BaseModel implements Serializable {
+    @SerializedName(value = "idDrink", alternate = "id")
     protected int id;
+    @SerializedName(value = "strDrink", alternate = "name")
     protected String name;
+    @SerializedName(value = "strInstructions", alternate = "description")
     protected String description;
 
     public BaseModel(String name) {
