@@ -21,6 +21,7 @@
     integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="/static/js/navbar.js" defer></script>
+    <script type="text/javascript" src="/static/js/search.js" defer></script>
     <!-- Latest compiled and minified CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -45,7 +46,7 @@
             </ul>
         </div>
         <form class="form-inline">
-            <a class="btn btn-primary" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+            <a class="btn btn-outline-light" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
         </form>
     </div>
 </nav>
@@ -55,8 +56,8 @@
             <div class="text-center">
                 <h3 class="text-primary">Drink happy thoughts...</h3>
                 <form class="form-inline d-flex justify-content-center mx-auto my-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                    <input class="form-control mr-sm-2" id="searchExp" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-primary my-2 my-sm-0" id="search-button" type="submit">Search</button>
                 </form>
             </div>
         </div>
@@ -65,13 +66,19 @@
 
 <div class="container">
     <div class="card">
-        <strong th:text="${category.name}">Category Title</strong>
-        <div class="input-group w-50 form-inline">
-            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected disabled>Filter by</option>
-                <option value="1">Price</option>
-                <option value="4">Category</option>
+        <div class="col-sm-12 col-md-6 col-lg-4" id="basic-filters" data-mdb-items=".basic-items" data-mdb-auto-filter="true">
+<!--            <span class="fa-lg" th:text="${category.name}"><strong>Category Title</strong></span>-->
+            <select class="form-select form-select-lg" id="filter-alcoholic" aria-label=".form-select-sm example">
+                <option value="1">None</option>
+                <option value="2">Alcoholic</option>
+                <option value="3">Alcohol free</option>
+                <option value="4">Optional</option>
             </select>
+            <button type="button" class="btn btn-primary btn-sm" id="filter-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                    <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"></path>
+                </svg>
+            </button>
         </div>
     </div>
     <div id="products" class="row">
