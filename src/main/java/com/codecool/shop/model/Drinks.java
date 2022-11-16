@@ -10,4 +10,8 @@ public class Drinks implements Serializable {
         return drinks;
     }
 
+    public int getSize() {
+        return drinks.size();
+    }
+
 }

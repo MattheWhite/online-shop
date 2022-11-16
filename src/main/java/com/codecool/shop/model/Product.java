@@ -1,5 +1,7 @@
 package com.codecool.shop.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.math.BigDecimal;
 import java.util.Currency;
 
@@ -9,13 +11,17 @@ public class Product extends BaseModel {
     private Currency defaultCurrency;
     private ProductCategory productCategory;
     private Supplier supplier;
+    @SerializedName(value = "category", alternate = "strAlcoholic")
+    String category;
+    @SerializedName(value = "imagePath", alternate = "strDrinkThumb")
+    String imagePath;
 
 
-    public Product(String name, BigDecimal defaultPrice, String currencyString, String description, ProductCategory productCategory, Supplier supplier) {
+    public Product(String name, BigDecimal defaultPrice, String currencyString, String description, ProductCategory productCategory, String path) {
         super(name, description);
         this.setPrice(defaultPrice, currencyString);
-        this.setSupplier(supplier);
         this.setProductCategory(productCategory);
+        this.setImagePath(path);
     }
 
     public BigDecimal getDefaultPrice() {
@@ -59,6 +65,22 @@ public class Product extends BaseModel {
     public void setSupplier(Supplier supplier) {
         this.supplier = supplier;
         this.supplier.addProduct(this);
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @Override
