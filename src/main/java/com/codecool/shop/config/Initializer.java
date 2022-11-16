@@ -10,6 +10,7 @@ import com.codecool.shop.dao.implementation.SupplierDaoMem;
 import com.codecool.shop.model.Drinks;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
+import com.codecool.shop.service.ProductOrganiser;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -49,15 +50,6 @@ public class Initializer implements ServletContextListener {
         productCategoryDataStore.add(optionalAlcoholic);
 
         //setting up products and printing it
-        for (Product drink:drinks.getDrinks()
-             ) {
-            if (drink.getCategory().equalsIgnoreCase("Non Alcoholic")) {
-                productDataStore.add(new Product(drink.getName(), new BigDecimal(String.format("%.2f", Math.floor(Math.random()*(60-20+1)+20))), "GBP", drink.getDescription(), nonAlcoholic, drink.getImagePath()));
-            } else if (drink.getCategory().equalsIgnoreCase("Alcoholic")) {
-                productDataStore.add(new Product(drink.getName(), new BigDecimal(String.format("%.2f", Math.floor(Math.random()*(60-20+1)+20))), "GBP", drink.getDescription(), alcoholic, drink.getImagePath()));
-            } else {
-                productDataStore.add(new Product(drink.getName(), new BigDecimal(String.format("%.2f", Math.floor(Math.random()*(60-20+1)+20))), "GBP", drink.getDescription(), optionalAlcoholic, drink.getImagePath()));
-            }
-        }
+        ProductOrganiser.setUpProducts(productDataStore, drinks, alcoholic, nonAlcoholic, optionalAlcoholic);
     }
 }
