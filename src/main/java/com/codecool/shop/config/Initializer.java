@@ -7,15 +7,16 @@ import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
+import com.codecool.shop.model.Drinks;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
-import com.codecool.shop.model.Supplier;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Random;
 
 @WebListener
 public class Initializer implements ServletContextListener {
@@ -26,17 +27,18 @@ public class Initializer implements ServletContextListener {
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
+        Drinks drinks;
         try {
-            APIController.setupJson(url);
+            drinks = APIController.setupJson(url);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         //setting up a new supplier
-        Supplier amazon = new Supplier("Amazon", "Digital content and services");
-        supplierDataStore.add(amazon);
-        Supplier lenovo = new Supplier("Lenovo", "Computers");
-        supplierDataStore.add(lenovo);
+//        Supplier amazon = new Supplier("Amazon", "Digital content and services");
+//        supplierDataStore.add(amazon);
+//        Supplier lenovo = new Supplier("Lenovo", "Computers");
+//        supplierDataStore.add(lenovo);
 
         //setting up a new product category
         ProductCategory alcoholic = new ProductCategory("Alcoholic", "Beverage", "A strong alcoholic drink.");
@@ -46,7 +48,21 @@ public class Initializer implements ServletContextListener {
         ProductCategory optionalAlcoholic = new ProductCategory("Optional", "Beverage", "Alcohol free drink, but you can buy alcoholic version");
         productCategoryDataStore.add(optionalAlcoholic);
 
+
+        Random random = new Random();
+
         //setting up products and printing it
+        for (Product drink:drinks.getDrinks()
+             ) {
+            if (drink.getCategory().equalsIgnoreCase("Non Alcoholic")) {
+                productDataStore.add(new Product(drink.getName(), new BigDecimal(String.format("%.2f", Math.floor(Math.random()*(60-20+1)+20))), "GBP", drink.getDescription(), nonAlcoholic, drink.getImagePath()));
+            } else if (drink.getCategory().equalsIgnoreCase("Alcoholic")) {
+                productDataStore.add(new Product(drink.getName(), new BigDecimal(String.format("%.2f", Math.floor(Math.random()*(60-20+1)+20))), "GBP", drink.getDescription(), alcoholic, drink.getImagePath()));
+            } else {
+                productDataStore.add(new Product(drink.getName(), new BigDecimal(String.format("%.2f", Math.floor(Math.random()*(60-20+1)+20))), "GBP", drink.getDescription(), optionalAlcoholic, drink.getImagePath()));
+            }
+        }
+
 //        productDataStore.add(new Product("Amazon Fire", new BigDecimal("49.9"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
     }
 }
