@@ -26,7 +26,5 @@ public class APIService {
         String content = getStringifiedJson(url);
         Drinks drinks = new Gson().fromJson(content, Drinks.class);
         return drinks;
-//        String jsonResp = new Gson().toJson(drinks.getDrinks());
-//        System.out.println(jsonResp);
     }
 }

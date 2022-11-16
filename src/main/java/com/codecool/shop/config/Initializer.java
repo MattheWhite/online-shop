@@ -26,7 +26,7 @@ public class Initializer implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
-        SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
+//        SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
         Drinks drinks;
         try {
             drinks = APIService.setupJson(url);
@@ -48,9 +48,6 @@ public class Initializer implements ServletContextListener {
         ProductCategory optionalAlcoholic = new ProductCategory("Optional", "Beverage", "Alcohol free drink, but you can buy alcoholic version");
         productCategoryDataStore.add(optionalAlcoholic);
 
-
-        Random random = new Random();
-
         //setting up products and printing it
         for (Product drink:drinks.getDrinks()
              ) {
@@ -62,7 +59,5 @@ public class Initializer implements ServletContextListener {
                 productDataStore.add(new Product(drink.getName(), new BigDecimal(String.format("%.2f", Math.floor(Math.random()*(60-20+1)+20))), "GBP", drink.getDescription(), optionalAlcoholic, drink.getImagePath()));
             }
         }
-
-//        productDataStore.add(new Product("Amazon Fire", new BigDecimal("49.9"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
     }
 }
