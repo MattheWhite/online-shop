@@ -1,6 +1,6 @@
 package com.codecool.shop.config;
 
-import com.codecool.shop.controller.APIController;
+import com.codecool.shop.service.APIService;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
@@ -29,7 +29,7 @@ public class Initializer implements ServletContextListener {
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
         Drinks drinks;
         try {
-            drinks = APIController.setupJson(url);
+            drinks = APIService.setupJson(url);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
