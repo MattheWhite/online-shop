@@ -20,6 +20,10 @@ public class ProductDaoMem implements ProductDao {
     private ProductDaoMem() {
     }
 
+    public int getSize() {
+        return data.size();
+    }
+
     public static ProductDaoMem getInstance() {
         if (instance == null) {
             instance = new ProductDaoMem();
