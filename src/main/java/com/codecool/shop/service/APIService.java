@@ -1,6 +1,5 @@
-package com.codecool.shop.controller;
+package com.codecool.shop.service;
 
-import com.codecool.shop.model.BaseModel;
 import com.codecool.shop.model.Drinks;
 import com.google.gson.Gson;
 
@@ -10,7 +9,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class APIController {
+public class APIService {
 
     public static String getStringifiedJson(URL url) throws IOException {
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
