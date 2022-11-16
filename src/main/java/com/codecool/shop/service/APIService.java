@@ -1,16 +1,15 @@
-package com.codecool.shop.controller;
+package com.codecool.shop.service;
 
 import com.codecool.shop.model.Drinks;
 import com.google.gson.Gson;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class Util {
+public class APIService {
 
     public static String getStringifiedJson(URL url) throws IOException {
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -22,16 +21,12 @@ public class Util {
         return inputLine;
     }
 
-    static void setupJson(HttpServletResponse response, URL url) throws IOException {
+    public static Drinks setupJson(String urlString) throws IOException {
+        URL url = new URL(urlString);
         String content = getStringifiedJson(url);
         Drinks drinks = new Gson().fromJson(content, Drinks.class);
-        String jsonResp = new Gson().toJson(drinks.getDrinks());
-        System.out.println(jsonResp);
-//        Gson gson = new Gson();
-//        String fullJson = gson.toJson(gson.toJson(content));
-//        System.out.println(fullJson);
-//        PrintWriter out = response.getWriter();
-//
-//        out.println(fullJson);
+        return drinks;
+//        String jsonResp = new Gson().toJson(drinks.getDrinks());
+//        System.out.println(jsonResp);
     }
 }
