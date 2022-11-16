@@ -16,6 +16,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 
 @WebListener
@@ -52,14 +53,13 @@ public class Initializer implements ServletContextListener {
         Random random = new Random();
 
         //setting up products and printing it
-        for (Product drink:drinks.getDrinks()
-             ) {
+        for (Product drink:drinks.getDrinks()) {
             if (drink.getCategory().equalsIgnoreCase("Non Alcoholic")) {
-                productDataStore.add(new Product(drink.getName(), new BigDecimal(String.format("%.2f", Math.floor(Math.random()*(60-20+1)+20))), "GBP", drink.getDescription(), nonAlcoholic, drink.getImagePath()));
+                productDataStore.add(new Product(drink.getName(), BigDecimal.valueOf(Math.floor(Math.random() * (60 - 20 + 1) + 20)).setScale(2, RoundingMode.HALF_UP), "GBP", drink.getDescription(), nonAlcoholic, drink.getImagePath()));
             } else if (drink.getCategory().equalsIgnoreCase("Alcoholic")) {
-                productDataStore.add(new Product(drink.getName(), new BigDecimal(String.format("%.2f", Math.floor(Math.random()*(60-20+1)+20))), "GBP", drink.getDescription(), alcoholic, drink.getImagePath()));
+                productDataStore.add(new Product(drink.getName(), BigDecimal.valueOf(Math.floor(Math.random() * (60 - 20 + 1) + 20)).setScale(2, RoundingMode.HALF_UP), "GBP", drink.getDescription(), alcoholic, drink.getImagePath()));
             } else {
-                productDataStore.add(new Product(drink.getName(), new BigDecimal(String.format("%.2f", Math.floor(Math.random()*(60-20+1)+20))), "GBP", drink.getDescription(), optionalAlcoholic, drink.getImagePath()));
+                productDataStore.add(new Product(drink.getName(), BigDecimal.valueOf(Math.random() * (60 - 20 + 1) + 20).setScale(2, RoundingMode.HALF_UP), "GBP", drink.getDescription(), optionalAlcoholic, drink.getImagePath()));
             }
         }
 
