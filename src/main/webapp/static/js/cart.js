@@ -4,6 +4,8 @@ function main() {
         let productId = button.dataset.id;
         sendProductId(productId);
     }))
+    let navBar = document.querySelector('#mainNav');
+    navBar.classList.add("navbar-shrink");
 }
 
 function sendProductId(productId) {
