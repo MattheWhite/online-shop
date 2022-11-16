@@ -1,6 +1,6 @@
 package com.codecool.shop.service;
 
-import com.codecool.shop.model.Drinks;
+import com.codecool.shop.model.dto.Drinks;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;

@@ -4,6 +4,10 @@ package com.codecool.shop.controller;
 import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.dao.implementation.CartDaoMem;
+import com.codecool.shop.model.Product;
+import com.codecool.shop.model.dto.ProductId;
+import com.codecool.shop.service.CartService;
+import com.google.gson.Gson;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -12,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/cart"})
@@ -28,6 +33,13 @@ public class CartController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("OKE");
+
+        BufferedReader in = req.getReader();
+        ProductId productId = new Gson().fromJson(in.readLine(), ProductId.class);
+        CartService cartService = new CartService();
+        cartService.addProductToCart(productId.getId());
+        System.out.println(cartService.getCartDao().getProducts());
+
         // get JSON - then to service
     }
 }

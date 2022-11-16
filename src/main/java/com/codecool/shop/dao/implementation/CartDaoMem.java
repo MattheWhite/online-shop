@@ -31,4 +31,9 @@ public class CartDaoMem implements CartDao {
         products.remove(product);
 
     }
+
+    @Override
+    public List<Product> getProducts() {
+        return products;
+    }
 }
