@@ -4,6 +4,9 @@ import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.implementation.CartDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.model.Product;
+
+import java.util.List;
 
 public class CartService {
     private CartDao cartDao = CartDaoMem.getInstance();
@@ -14,5 +17,9 @@ public class CartService {
 
     public CartDao getCartDao() {
         return cartDao;
+    }
+
+    public List<Product> getAllProducts() {
+        return cartDao.getProducts();
     }
 }
