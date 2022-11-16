@@ -83,6 +83,10 @@ public class Product extends BaseModel {
         this.category = category;
     }
 
+    public String getProductCategoryName() {
+        return productCategory.getCategoryName();
+    }
+
     @Override
     public String toString() {
         return String.format("id: %1$d, " +

@@ -33,6 +33,10 @@ public class ProductCategory extends BaseModel {
         this.products.add(product);
     }
 
+    public String getCategoryName() {
+        return this.getName();
+    }
+
     @Override
     public String toString() {
         return String.format(
