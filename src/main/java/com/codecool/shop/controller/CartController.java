@@ -25,8 +25,10 @@ public class CartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         CartDao cart = CartDaoMem.getInstance();
+        CartService cartService = new CartService();
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
+        context.setVariable("products", cartService.getAllProducts());
         engine.process("product/cart.html", context, resp.getWriter());
     }
 
