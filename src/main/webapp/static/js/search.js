@@ -1,4 +1,4 @@
-function setProducts(products, filterExpression) {
+function setProductsVisibility(products, filterExpression) {
     for (const product of products) {
         if (product.dataset.category.toLowerCase() === filterExpression.toLowerCase()) {
             product.style.display = "inline-block";
@@ -10,24 +10,23 @@ function setProducts(products, filterExpression) {
     }
 }
 
-function filterButtonManager(filterButton, filterAlcoholic, filterExpression, products) {
-    filterButton.addEventListener('click', function () {
+function filterButtonManager(filterAlcoholic, filterExpression, products) {
+    filterAlcoholic.addEventListener('change', function () {
         for (const filterAlcoholicElement of filterAlcoholic) {
             if (filterAlcoholicElement.selected) {
                 filterExpression = filterAlcoholicElement.innerText;
             }
         }
-        setProducts(products, filterExpression);
+        setProductsVisibility(products, filterExpression);
     })
 }
 
 function filterDrinks() {
     const products = document.querySelectorAll(".col");
-    const filterButton = document.querySelector("#filter-button");
     const filterAlcoholic = document.querySelector("#filter-alcoholic");
     let filterExpression = "";
 
-    filterButtonManager(filterButton, filterAlcoholic, filterExpression, products);
+    filterButtonManager(filterAlcoholic, filterExpression, products);
 }
 
 filterDrinks();
