@@ -34,14 +34,19 @@ public class CartController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("OKE");
-
         BufferedReader in = req.getReader();
         ProductId productId = new Gson().fromJson(in.readLine(), ProductId.class);
         CartService cartService = new CartService();
         cartService.addProductToCart(productId.getId());
-        System.out.println(cartService.getCartDao().getProducts());
 
         // get JSON - then to service
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        BufferedReader in = req.getReader();
+        ProductId productId = new Gson().fromJson(in.readLine(), ProductId.class);
+        CartService cartService = new CartService();
+        cartService.removeProductFromCart(productId.getId());
     }
 }
