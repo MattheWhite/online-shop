@@ -1,11 +1,17 @@
 function setProductsVisibility(products, filterExpression) {
     for (const product of products) {
         if (product.dataset.category.toLowerCase() === filterExpression.toLowerCase()) {
-            product.style.display = "inline-block";
+            product.classList.remove("not-visible");
+            product.classList.remove("visible");
+            product.classList.add("visible");
         } else if (filterExpression === "None") {
-            product.style.display = "inline-block";
+            product.classList.remove("not-visible");
+            product.classList.remove("visible");
+            product.classList.add("visible");
         } else {
-            product.style.display = "none";
+            product.classList.remove("not-visible");
+            product.classList.remove("visible");
+            product.classList.add("not-visible");
         }
     }
 }
