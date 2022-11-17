@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="author" content="Codecool"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta charset="utf-8" />
+    <meta name="author" content="Codecool" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <title>Codecool Shop</title>
 
@@ -14,22 +14,21 @@
 
     <!--Latest compiled and minified Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-            crossorigin="anonymous"></script>
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="/static/js/navbar.js" defer></script>
+    <script type="text/javascript" src="/static/js/search.js" defer></script>
     <script type="text/javascript" src="/static/js/cart.js" defer></script>
     <!-- Latest compiled and minified CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
 
-    <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -41,8 +40,8 @@
             <div class="text-center">
                 <h3 class="text-primary">Drink happy thoughts...</h3>
                 <form class="form-inline d-flex justify-content-center mx-auto my-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                    <input class="form-control mr-sm-2" id="searchExp" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-primary my-2 my-sm-0" id="search-button" type="submit">Search</button>
                 </form>
             </div>
         </div>
@@ -51,21 +50,21 @@
 
 <div class="container">
     <div class="card">
-        <strong th:text="${category.name}">Category Title</strong>
-        <div class="input-group w-50 form-inline">
-            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected disabled>Filter by</option>
-                <option value="1">Price</option>
-                <option value="4">Category</option>
+        <div class="col-sm-12 col-md-6 col-lg-4" id="basic-filters" data-mdb-items=".basic-items" data-mdb-auto-filter="true">
+<!--            <span class="fa-lg" th:text="${category.name}"><strong>Category Title</strong></span>-->
+            <select class="form-select form-select-lg" id="filter-alcoholic" aria-label=".form-select-sm example">
+                <option value="1">None</option>
+                <option value="2">Alcoholic</option>
+                <option value="3">Alcohol free</option>
+                <option value="4">Optional</option>
             </select>
         </div>
     </div>
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4"
-             data-type="drinks" th:attr="data-category=${prod.getProductCategoryName()}"
-             th:each="prod,iterStat : ${products}">
+             data-type="drinks" th:attr="data-category=${prod.getProductCategoryName()}" th:each="prod,iterStat : ${products}">
             <div class="card">
-                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src=${prod.imagePath}" alt=""/>
+                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src=${prod.imagePath}" alt="" />
                 <div class="card-header">
                     <h4 class="card-title" th:text="${prod.name}">Product name</h4>
                     <p class="card-text" th:text="${prod.description}">Product description... </p>
@@ -75,7 +74,7 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <button class="btn btn-success add-to-cart" th:data-id="${prod.getId()}">Add to cart</button>
+                        <button class="btn btn-primary add-to-cart" th:data-id="${prod.getId()}">Add to cart</button>
                     </div>
                 </div>
             </div>
