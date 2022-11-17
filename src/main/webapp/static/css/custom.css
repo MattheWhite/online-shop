@@ -82,3 +82,11 @@
 .counter {
     align-items: center;
 }
+
+.visible {
+    display: inline-block;
+}
+
+.not-visible {
+    display: none;
+}

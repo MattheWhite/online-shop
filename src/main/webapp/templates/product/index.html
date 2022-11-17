@@ -22,6 +22,7 @@
 
     <script type="text/javascript" src="/static/js/navbar.js" defer></script>
     <script type="text/javascript" src="/static/js/search.js" defer></script>
+    <script type="text/javascript" src="/static/js/dynamicSearch.js" defer></script>
     <script type="text/javascript" src="/static/js/cart.js" defer></script>
     <!-- Latest compiled and minified CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
@@ -61,8 +62,8 @@
         </div>
     </div>
     <div id="products" class="row">
-        <div class="col col-sm-12 col-md-6 col-lg-4"
-             data-type="drinks" th:attr="data-category=${prod.getProductCategoryName()}" th:each="prod,iterStat : ${products}">
+        <div class="col col-sm-12 col-md-6 col-lg-4 visible"
+             data-type="drinks" th:attr="data-category=${prod.getProductCategoryName()},data-product-name=${prod.getName()}" th:each="prod,iterStat : ${products}">
             <div class="card">
                 <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src=${prod.imagePath}" alt="" />
                 <div class="card-header">
