@@ -22,4 +22,8 @@ public class CartService {
     public List<Product> getAllProducts() {
         return cartDao.getProducts();
     }
+
+    public void removeProductFromCart(int id) {
+        cartDao.remove(productDao.find(id));
+    }
 }
