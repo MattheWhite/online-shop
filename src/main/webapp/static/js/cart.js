@@ -29,6 +29,7 @@ function main() {
         let price = productPrice.dataset.price;
         subtotal += parseInt(price) * +productQuantity.getAttribute("value");
         subtotalElement.innerHTML = `£${subtotal}.00`;
+        setTotalPrice(subtotal);
         productPrice.innerHTML = `${parseInt(price) * +productQuantity.getAttribute("value")}.00 GBP`;
 
         let productId = item.dataset.id;
@@ -50,6 +51,7 @@ function main() {
             productPrice.innerHTML = `${totalPrice}.00 GBP`;
             subtotal += parseInt(price);
             subtotalElement.innerHTML = `£${subtotal}.00`;
+            setTotalPrice(subtotal);
         })
         let decrementButton = item.querySelector(".prod-decrement");
 
@@ -67,6 +69,7 @@ function main() {
             productPrice.innerHTML = `${totalPrice}.00 GBP`;
             subtotal -= parseInt(price);
             subtotalElement.innerHTML = `£${subtotal}.00`;
+            setTotalPrice(subtotal);
         })
     });
 }
@@ -97,5 +100,20 @@ function sendProductIdWithFlag(productId, requestType, incrOrDecr) {
     });
 }
 
+function setShippingPrice() {
+    let shippingCost = document.querySelector(".shipping");
+    shippingCost.innerHTML = "£20.00";
+}
+
+function setTotalPrice(price) {
+    let totalPrice = document.querySelector(".amount.total");
+    if (price > 0) {
+        totalPrice.innerHTML = String("£" + (price + 20) + ".00");
+    } else if (price === 0) {
+        totalPrice.innerHTML = "£00.00"
+    }
+}
+
 
 main();
+setShippingPrice();
