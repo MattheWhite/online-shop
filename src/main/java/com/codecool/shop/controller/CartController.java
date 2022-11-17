@@ -4,8 +4,7 @@ package com.codecool.shop.controller;
 import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.dao.implementation.CartDaoMem;
-import com.codecool.shop.model.Product;
-import com.codecool.shop.model.dto.ProductId;
+import com.codecool.shop.model.dto.ProductData;
 import com.codecool.shop.service.CartService;
 import com.google.gson.Gson;
 import org.thymeleaf.TemplateEngine;
@@ -35,9 +34,9 @@ public class CartController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         BufferedReader in = req.getReader();
-        ProductId productId = new Gson().fromJson(in.readLine(), ProductId.class);
+        ProductData productData = new Gson().fromJson(in.readLine(), ProductData.class);
         CartService cartService = new CartService();
-        cartService.addProductToCart(productId.getId());
+        cartService.addProductToCart(productData.getId());
 
         // get JSON - then to service
     }
@@ -45,8 +44,16 @@ public class CartController extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         BufferedReader in = req.getReader();
-        ProductId productId = new Gson().fromJson(in.readLine(), ProductId.class);
+        ProductData productData = new Gson().fromJson(in.readLine(), ProductData.class);
         CartService cartService = new CartService();
-        cartService.removeProductFromCart(productId.getId());
+        cartService.removeProductFromCart(productData.getId());
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        BufferedReader in = req.getReader();
+        ProductData productData = new Gson().fromJson(in.readLine(), ProductData.class);
+        CartService cartService = new CartService();
+        cartService.updateProductState(productData.getId(), productData.getType());
     }
 }

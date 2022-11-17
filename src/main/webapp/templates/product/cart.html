@@ -44,7 +44,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
                 </div>
-                <div class="cards" th:each="prod,iterStat : ${products}">
+                <div class="cards" th:each="prod,iterStat : ${products.keySet()}">
                     <div class="card rounded-3 mb-4 cart-item" th:data-id="${prod.getId()}">
                         <div class="card-body p-4">
                             <div class="row d-flex justify-content-between align-items-center">
@@ -57,7 +57,7 @@
                                     <p class="lead fw-normal mb-2" th:text="${prod.name}"></p>
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex counter">
-                                    <button class="btn btn-link px-2"
+                                    <button class="btn btn-link px-2 prod-decrement"
                                             onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                              fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
@@ -66,10 +66,10 @@
                                         </svg>
                                     </button>
 
-                                    <input id="form1" min="0" name="quantity" value="1" type="number"
-                                           class="form-control form-control-sm"/>
+                                    <input id="form1" min="0" name="quantity" th:value="${products.get(prod)}" type="number"
+                                           class="form-control form-control-sm quantity"/>
 
-                                    <button class="btn btn-link px-2"
+                                    <button class="btn btn-link px-2 prod-increment"
                                             onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                              fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
@@ -79,7 +79,7 @@
                                     </button>
                                 </div>
                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                    <h5 class="mb-0" th:text="${prod.getPrice()}"></h5>
+                                    <h5 class="mb-0 product-price" th:data-price="${prod.getPrice()}"></h5>
                                 </div>
                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                     <a href="#!" class="text-danger trash-icon">
