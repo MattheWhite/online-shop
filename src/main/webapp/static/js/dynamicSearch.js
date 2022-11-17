@@ -35,10 +35,15 @@ function filterInputHandler(e) {
             filterExpression = filterAlcoholicElement.innerText;
         }
     }
-    console.log(filterExpression)
     const products = document.querySelectorAll(".col");
-    const neededProds = Array.from(products).filter(product =>
+    console.log(filterExpression)
+    let neededProds;
+    if (filterExpression === "None") {
+        neededProds = Array.from(products)
+    } else {
+        neededProds = Array.from(products).filter(product =>
         product.dataset.category.toLowerCase() === filterExpression.toLowerCase())
+    }
     let product_filter = e.target.value
     const nonFilteredNodes = getNonFilteredItems(neededProds, product_filter)
     const filteredNodes = getFilteredItems(neededProds, product_filter)
