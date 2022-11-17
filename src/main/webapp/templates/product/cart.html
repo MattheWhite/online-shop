@@ -66,7 +66,7 @@
                                         </svg>
                                     </button>
 
-                                    <input id="form1" min="0" name="quantity" th:value="${products.get(prod)}" type="number"
+                                    <input id="form1" min="0" name="quantity" th:data-value="${products.get(prod)}" th:value="${products.get(prod)}" type="number"
                                            class="form-control form-control-sm quantity"/>
 
                                     <button class="btn btn-link px-2 prod-increment"
@@ -100,7 +100,7 @@
                 <div class="order-total">
                     <div class="order">
                         <p >Subtotal:</p>
-                        <p class="amount">$4798.00</p>
+                        <p class="amount subtotal"></p>
                     </div>
                     <div class="order">
                         <p >Shipping:</p>

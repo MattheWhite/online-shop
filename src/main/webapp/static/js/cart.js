@@ -18,9 +18,18 @@ function main() {
     let navBar = document.querySelector('#mainNav');
     navBar.classList.add("navbar-shrink");
 
+    let subtotalElement = document.querySelector(".subtotal");
+    let subtotal = 0;
+
     let cartItems = document.querySelectorAll(".cart-item");
     cartItems.forEach(item => {
-        displayPrice(item);
+
+        let productQuantity = item.querySelector(".quantity");
+        let productPrice = item.querySelector(".product-price");
+        let price = productPrice.dataset.price;
+        subtotal += parseInt(price) * +productQuantity.getAttribute("value");
+        subtotalElement.innerHTML = `£${subtotal}.00`;
+        productPrice.innerHTML = `${parseInt(price) * +productQuantity.getAttribute("value")}.00 GBP`;
 
         let productId = item.dataset.id;
         let trashIcon = item.querySelector(".trash-icon");
@@ -28,15 +37,36 @@ function main() {
             sendProductId(productId, HTTP_DELETE);
             item.remove();
         });
+
         let incrementButton = item.querySelector(".prod-increment");
         incrementButton.addEventListener("click", () => {
             sendProductIdWithFlag(productId, HTTP_PUT, INCREMENT_TYPE);
-            displayPrice(item);
+            let productQuantityInput = item.querySelector(".quantity");
+            let productQuantity = +productQuantityInput.dataset.value + 1;
+            productQuantityInput.dataset.value = String(productQuantity);
+            let productPrice = item.querySelector(".product-price");
+            let price = productPrice.dataset.price;
+            let totalPrice = parseInt(price) * +productQuantity;
+            productPrice.innerHTML = `${totalPrice}.00 GBP`;
+            subtotal += parseInt(price);
+            subtotalElement.innerHTML = `£${subtotal}.00`;
         })
         let decrementButton = item.querySelector(".prod-decrement");
+
         decrementButton.addEventListener("click", () => {
             sendProductIdWithFlag(productId, HTTP_PUT, DECREMENT_TYPE);
-            displayPrice(item);
+            let productQuantityInput = item.querySelector(".quantity");
+            let productQuantity = +productQuantityInput.dataset.value - 1;
+            productQuantityInput.dataset.value = String(productQuantity);
+            let productPrice = item.querySelector(".product-price");
+            let price = productPrice.dataset.price;
+            if (productQuantity === 0) {
+                item.remove();
+            }
+            let totalPrice = parseInt(price) * +productQuantity;
+            productPrice.innerHTML = `${totalPrice}.00 GBP`;
+            subtotal -= parseInt(price);
+            subtotalElement.innerHTML = `£${subtotal}.00`;
         })
     });
 }
@@ -67,11 +97,5 @@ function sendProductIdWithFlag(productId, requestType, incrOrDecr) {
     });
 }
 
-function displayPrice(product) {
-    let productQuantity = product.querySelector(".quantity");
-    let productPrice = product.querySelector(".product-price");
-    let price = productPrice.dataset.price;
-    productPrice.innerHTML = `${parseInt(price) * +productQuantity.getAttribute("value")}.00 GBP`;
-}
 
 main();
