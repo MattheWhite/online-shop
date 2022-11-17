@@ -3,10 +3,13 @@ package com.codecool.shop.dao;
 import com.codecool.shop.model.Product;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CartDao {
     void add(Product product);
     void remove(Product product);
 
-    List<Product> getProducts();
+    Map<Product, Integer> getProducts();
+
+    void removeAll(Product product);
 }
