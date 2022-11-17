@@ -88,3 +88,22 @@
 .summary {
     margin-right: 50px;
 }
+
+.order-total {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.order {
+    display: flex;
+    justify-content: space-between;
+    width: 23rem;
+    font-size: 1.3em;
+}
+
+.amount {
+    margin-left: 20px;
+    float: end;
+}
