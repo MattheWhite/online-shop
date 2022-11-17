@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
@@ -95,7 +94,6 @@
                         </div>
                     </div>
                 </div>
-
                 <hr class="my-4">
                 <div class="order-total">
                     <div class="order">
@@ -116,9 +114,10 @@
                         <a type="button" class="btn btn-primary btn-block btn-lg" href="/">Continue Shopping</a>
                     </div>
                     <div class="card pay-button">
-                        <button type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+                        <button type="button" class="btn btn-warning btn-block btn-lg" data-toggle="modal" data-target="#exampleModalLong">Proceed to Pay</button>
                     </div>
                 </div>
+                <div th:replace="/product/payment.html :: payment-modal"></div>
             </div>
         </div>
     </div>
