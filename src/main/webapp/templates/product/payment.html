@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Modal -->
+<div th:fragment="payment-modal" class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <article class="card border-0">
+                    <div class="card-body p-5">
+                        <ul class="nav bg-light nav-pills rounded nav-fill mb-3" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" data-toggle="pill" href="#nav-tab-card">
+                                    <i class="fa fa-credit-card"></i> Credit Card</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="pill" href="#nav-tab-paypal">
+                                    <i class="fa fa-paypal"></i>  Paypal</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="pill" href="#nav-tab-bank">
+                                    <i class="fa fa-university"></i>  Bank Transfer</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane fade active show" id="nav-tab-card">
+                                <p class="alert alert-success">Some text success or error</p>
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="username">Full name (on the card)</label>
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="" required="">
+                                    </div> <!-- form-group.// -->
+
+                                    <div class="form-group">
+                                        <label for="cardNumber">Card number</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="">
+                                            <div class="input-group-append">
+				<span class="input-group-text text-muted">
+					<i class="fa fa-cc-visa"></i> &nbsp; <i class="fa fa-cc-amex"></i> &nbsp;
+					<i class="fa fa-cc-mastercard"></i>
+				</span>
+                                            </div>
+                                        </div>
+                                    </div> <!-- form-group.// -->
+
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <div class="form-group">
+                                                <label><span class="hidden-xs">Expiration</span> </label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" placeholder="MM" name="">
+                                                    <input type="number" class="form-control" placeholder="YY" name="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
+                                                <input type="number" class="form-control" required="">
+                                            </div> <!-- form-group.// -->
+                                        </div>
+                                    </div> <!-- row.// -->
+                                    <button class="subscribe btn btn-primary btn-block" type="button" > Confirm  </button>
+                                </form>
+                            </div> <!-- tab-pane.// -->
+                            <div class="tab-pane fade" id="nav-tab-paypal">
+                                <p>Paypal is the easiest way to pay online</p>
+                                <p>
+                                    <button type="button" class="btn btn-primary"> <i class="fa fa-paypal"></i> Log in my Paypal </button>
+                                </p>
+                                <p><strong>Note:</strong> Please note that our products are not real, and we do not take any responsibility for unsuccessful order and no refund. </p>
+                            </div>
+                            <div class="tab-pane fade" id="nav-tab-bank">
+                                <p>Bank account details</p>
+                                <dl class="param">
+                                    <dt>BANK: </dt>
+                                    <dd> THE WORLD BANK</dd>
+                                </dl>
+                                <dl class="param">
+                                    <dt>Account number: </dt>
+                                    <dd> 12345678912345</dd>
+                                </dl>
+                                <dl class="param">
+                                    <dt>IBAN: </dt>
+                                    <dd> 123456789</dd>
+                                </dl>
+                                <p><strong>Note:</strong> Please note that our products are not real, and we do not take any responsibility for unsuccessful order and no refund. </p>
+                            </div> <!-- tab-pane.// -->
+                        </div> <!-- tab-content .// -->
+
+                    </div> <!-- card-body.// -->
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>
