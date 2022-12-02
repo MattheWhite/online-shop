@@ -49,6 +49,4 @@ public class CartDaoMem implements CartDao {
     public void removeAll(Product product) {
         products.remove(product);
     }
-
-
 }
