@@ -14,14 +14,12 @@ public class PresenterBot {
     public static void present() {
 
         System.setProperty("webdriver.chrome.driver", "./PresenterBot/selenium/drivers/chromedriver/chromedriver.exe");
-        ChromeOptions option = new ChromeOptions();
-        option.addArguments("--disable-blink-features=AutomationControlled");
-        option.addArguments("--disable-notifications");
-        option.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+        ChromeOptions option = setChromeOptions();
         WebDriver chromeDriver = new ChromeDriver(option);
 
         chromeDriver.manage().window().maximize();
         chromeDriver.get("https://docs.google.com/presentation/d/1EZjJAcH88PcAIs76V-IQHz97v5Z0JzTJkwWWZP5i3JY/edit?usp=sharing");
+
         WebElement slideContainer = new WebDriverWait(chromeDriver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.elementToBeClickable(By.className("punch-filmstrip-thumbnail-pagenumber")));
 
@@ -37,6 +35,15 @@ public class PresenterBot {
 
         chromeDriver.close();
     }
+
+    private static ChromeOptions setChromeOptions() {
+        ChromeOptions option = new ChromeOptions();
+        option.addArguments("--disable-blink-features=AutomationControlled");
+        option.addArguments("--disable-notifications");
+        option.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+        return option;
+    }
+
     private static void GoThroughPages(int numberOfSlides, WebElement element) {
         for (int i = 0; i < numberOfSlides; i++) {
             try {
