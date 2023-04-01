@@ -83,6 +83,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+Everyone loves to buy and sell stuff but we need a shop for that! In this project the goal is to build one the most common type of websites on the web: an online eCommerce web-application, where users can browse products, add them into a shopping cart, checkout items and make payments.
+
+
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
@@ -95,6 +98,17 @@ Here's why:
 Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
 
 Use the `BLANK_README.md` to get started.
+
+
+
+* Advanced OOP concepts are used in the project: inheritance, there is at least on abstract class, there is at least one interface implemented
+
+* The project keeps the three-layer structure: servlets handle HTTP, service objects handle business logic, and DAOs handle data access.
+
+* The page doesn't show a server error anytime during the review
+
+* All code is pushed to GitHub repository by atomic commits. The implemented feature related commits managed on separated feature branches and merged by a pull request to the master branch.
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
