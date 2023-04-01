@@ -3,10 +3,19 @@ package com.codecool.shop.model;
 
 import java.lang.reflect.Field;
 
-public class BaseModel {
+import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+import java.lang.reflect.Field;
+
+public class BaseModel implements Serializable {
+
+    @SerializedName(value = "id", alternate = "idDrink")
     protected int id;
+
+    @SerializedName(value = "name", alternate = "strDrink")
     protected String name;
+    @SerializedName(value = "description", alternate = "strInstructions")
     protected String description;
 
     public BaseModel(String name) {
@@ -17,7 +26,6 @@ public class BaseModel {
         this.name = name;
         this.description = description;
     }
-
 
     public int getId() {
         return id;

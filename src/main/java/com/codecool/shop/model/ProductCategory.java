@@ -6,6 +6,7 @@ import java.util.List;
 public class ProductCategory extends BaseModel {
     private String department;
     private List<Product> products;
+    private String type;
 
     public ProductCategory(String name, String department, String description) {
         super(name);
@@ -21,6 +22,15 @@ public class ProductCategory extends BaseModel {
         this.department = department;
     }
 
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public void setProducts(ArrayList<Product> products) {
         this.products = products;
     }
@@ -33,6 +43,10 @@ public class ProductCategory extends BaseModel {
         this.products.add(product);
     }
 
+    public String getCategoryName() {
+        return this.getName();
+    }
+
     @Override
     public String toString() {
         return String.format(
@@ -43,6 +57,7 @@ public class ProductCategory extends BaseModel {
                 this.id,
                 this.name,
                 this.department,
+                this.type,
                 this.description);
     }
 }
