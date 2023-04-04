@@ -9,11 +9,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="" alt="Logo" width="auto" height="80">
-  <h2 align="center">Online Coctail Webshop</h2>
+    <img src="https://t3.ftcdn.net/jpg/00/50/07/72/360_F_50077203_AzFcB0jeupusdu9XynnfDTTrU6TVKDvL.jpg" alt="Logo" width="600" height="150">
+  <h2 align="center" style="font-weight: bold">Online Coctail Webshop</h2>
 </div>
-
-[![Pygame][Pygame.com]][Pygame-url]
 
 
 <!-- TABLE OF CONTENTS -->
@@ -125,7 +123,7 @@ MattheWhite - Fehér Mátyás
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![GitHub][github-shield]][github-url]
 
-Project Link: [https://github.com/MattheWhite/roguelike-game-python](https://github.com/MattheWhite/roguelike-game-python)
+Project Link: [https://github.com/MattheWhite/online-shop](https://github.com/MattheWhite/online-shop)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -134,8 +132,8 @@ Project Link: [https://github.com/MattheWhite/roguelike-game-python](https://git
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/MattheWhite/roguelike-game-python.svg?style=for-the-badge
-[contributors-url]: https://github.com/MattheWhite/roguelike-game-python/graphs/contributors
+[contributors-shield]: https://img.shields.io/github/contributors/MattheWhite/online-shop.svg?style=for-the-badge
+[contributors-url]: https://github.com/MattheWhite/online-shop/graphs/contributors
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=349
 [linkedin-url]: https://www.linkedin.com/in/matyas-feher/
 [github-shield]: https://img.shields.io/badge/-GitHub-black.svg?style=for-the-badge&logo=github&colorB=947
