@@ -48,7 +48,7 @@
 
 * Advanced OOP concepts are used in the project inheritance, implemented abstract classes, interfaces, uses DAOs for object handling, and more. Separated every logical layer intp different modules,like: Model, Service, Controller, and others.
 
-* Searching among drinks is done with Javascript filetring, DOM manipulation.
+* Searching among drinks is done with Javascript filtering, DOM manipulation.
 
 * All code is pushed to GitHub repository by atomic commits.
 
