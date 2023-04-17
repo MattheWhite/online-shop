@@ -94,6 +94,9 @@ This section list major frameworks/libraries used to build and develop the proje
 
 * Java
 
+`Follow the link below for more information about Java download and install`
+
+_Dev Guide to Download: https://www.oracle.com/java/technologies/downloads/_
 
 
 <!-- CONTACT -->
