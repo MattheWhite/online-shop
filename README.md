@@ -98,6 +98,8 @@ This section list major frameworks/libraries used to build and develop the proje
 
 _Dev Guide to Download: https://www.oracle.com/java/technologies/downloads/_
 
+_JDK Installation Guide: https://docs.oracle.com/en/java/javase/20/install/overview-jdk-installation.html#GUID-8677A77F-231A-40F7-98B9-1FD0B48C346A_
+
 
 <!-- CONTACT -->
 ## Contact
